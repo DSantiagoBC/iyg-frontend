@@ -1,0 +1,12 @@
+<form [formGroup]="externalsForm" (ngSubmit)="onSubmit()">
+  <label for="external-id">Documento: </label>
+  <input id="external-id" type="text" formControlName="externalId" />
+
+  <label for="name">Nombre: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="activity">Industria: </label>
+  <input id="activity" type="text" formControlName="activity" />
+
+  <button type="submit" [disabled]="!externalsForm.valid">Crear</button>
+</form>

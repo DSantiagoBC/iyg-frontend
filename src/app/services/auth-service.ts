@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { catchError, Observable, shareReplay, tap } from 'rxjs';
-import { User } from './user';
+import { HttpClient } from '@angular/common/http';
+import { catchError, shareReplay } from 'rxjs';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -17,13 +17,13 @@ export class AuthService {
   }
 
   public logout() {
-    return this.http.post('/api/auth/logout', null);
+    return this.http.post('/api/auth/logout', null).pipe(catchError((_, caught) => caught));
   }
 
   public signup(user: User) {
     return this.http.put('/api/auth/signup', user, { observe: 'response' }).pipe(
       catchError((_, caught) => caught),
-      shareReplay(1)
+      shareReplay(1),
     );
   }
 }

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../auth-service';
-import { User } from '../user';
+import { AuthService } from '../services/auth-service';
+import { User } from '../interfaces/user';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError } from 'rxjs';
 
